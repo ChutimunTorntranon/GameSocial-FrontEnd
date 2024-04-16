@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useEffect, useState, createContext, Children } from "react";
+import { useEffect, useState, createContext } from "react";
 
 export const AuthContext = createContext();
 
-export const AuthContextProvider = () => {
+export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
   );
@@ -26,7 +26,7 @@ export const AuthContextProvider = () => {
 
   return (
     <AuthContext.Provider value={{ currentUser, login }}>
-      {Children}
+      {children}
     </AuthContext.Provider>
   );
 };
